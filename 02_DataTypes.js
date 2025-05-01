@@ -56,9 +56,10 @@ console.log(Boolean("")); // false
 /*---
  * ✅ == vs === (Interview Must-Know)
 
- * Operator	Meaning	Coercion	Example
- * ==	Loose equality	✅ Yes	1 == '1' ✅
- * ===	Strict equality	❌ No	1 === '1' ❌
+ * Operator	        Meaning	              Coercion	Example
+ * ==	            Loose equality	     ✅ Yes	   1 == '1' ✅
+ * ===	            Strict equality	     ❌ No	   1 === '1' ❌
+ * 
  * Tip: Always prefer === for predictable behavior in code.
 ---*/
 
@@ -84,7 +85,7 @@ console.log("abc" instanceof String); // false (because string literal is not an
 
 /*--
  * 💡 Interview Tip for typeof null:
- * Even though typeof null === 'object', it's a bug in JS from the early days and kept for backward compatibility.
+ *     Even though typeof null === 'object', it's a bug in JS from the early days and kept for backward compatibility.
 ---*/
 
 /*--- Primitives are immutable 
