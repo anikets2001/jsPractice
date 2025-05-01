@@ -13,7 +13,7 @@ Event Loop
 ---*/
 
 // 🔸 1. Promises
-// A Promise represents a future value. It has 3 states:
+// A Promise a object that represents the eventual completion/failure of an asynchronous task and returns its value. It has 3 states:
 
 // pending
 // fulfilled → .then()
@@ -49,9 +49,9 @@ getData();
 /*---
 🔸 3. Microtasks vs Macrotasks
 
-Task Type	Examples	Priority
-Microtask	Promise.then(), queueMicrotask()	✅ Higher
-Macrotask	setTimeout, setInterval, DOM events	❌ Lower
+Task Type	Examples	                            Priority
+Microtask	Promise.then(), queueMicrotask()	    ✅ Higher
+Macrotask	setTimeout, setInterval, DOM events	    ❌ Lower
 ---*/
 
 console.log("Start");
@@ -120,6 +120,6 @@ Microtasks	        Promises, queueMicrotask – run first
 Macrotasks	        setTimeout, setInterval, UI events – run later
 Event Loop	        Handles execution order between sync, micro, macro tasks
 Callback Hell	    Deeply nested callbacks, hard to read
-Promise Chaining	Clean alternative to callbacks
+Promise Chaining    Clean alternative to callbacks
 
 ---*/
