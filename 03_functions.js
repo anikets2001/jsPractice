@@ -24,13 +24,14 @@ const greet = function () {
 /*--
  * ✅ Function Declarations vs Function Expressions (All Differences)
    
-Feature	                        Function Declaration	                                    Function Expression
-Syntax	                        function name() {}	                                        const name = function() {}
-Hoisting	                    ✅ Fully hoisted (can call before it's defined)	          ❌ Not hoisted (throws error if called before init)
+Feature	                      Function Declaration	                                    Function Expression
+
+Syntax	                      function name() {}	                                      const name = function() {}
+Hoisting	                    ✅ Fully hoisted (can call before it's defined)	        ❌ Not hoisted (throws error if called before init)
 Function Name	                Must have a name	                                        Can be named or anonymous
 When Defined	                Defined at parse time	                                    Defined at runtime
 Usage Before Definition     	✅ Allowed	                                              ❌ ReferenceError or TypeError
-Part of Which Construct?	    Standalone declaration	                                    Expression assigned to a variable or property
+Part of Which Construct?	    Standalone declaration	                                  Expression assigned to a variable or property
 Can Be Used as Callback?	    ✅ Yes	                                                  ✅ Yes
 Good For?	                    Utility/helper functions	                                Closures, conditionally defined functions
 
@@ -45,7 +46,7 @@ function sayHi() {
 
 // function expression (not hoisted)
 
-// greet(); // ❌ TypeError: greet is not a function
+// greetMsg(); // ❌ TypeError: greet is not a function
 
 const greetMsg = function () {
   console.log("Hi!");

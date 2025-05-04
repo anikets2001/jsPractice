@@ -33,9 +33,9 @@ Events in the DOM follow a 3-phase model:
 
 Phase Name	        Description
 
-Capturing	        Event travels from root → target’s parent
+Capturing	          Event travels from root → target’s parent
 Target	            Event reaches the target element
-Bubbling	        Event bubbles from target → root (default phase in JS)
+Bubbling	          Event bubbles from target → root (default phase in JS)
 ---*/
 
 // ✅ Example:
@@ -68,26 +68,30 @@ event.stopImmediatePropagation() → Stops other handlers of the same event too.
 element.addEventListener(type, listener, options);
 
 ✅ Options object:
-Option	        Description
-once	        Runs handler only once
-passive	        Improves performance for scroll/touch
-capture	Use     capturing phase instead of bubbling
+
+Option	              Description
+
+once	                Runs handler only once
+passive	              Improves performance for scroll/touch
+capture	Use           capturing phase instead of bubbling
 
 ✅ Example:
 
 window.addEventListener("scroll", handleScroll, { passive: true });
 button.addEventListener("click", handleClickOnce, { once: true });
+button.addEventListener("click", handleClickOnce, { capture: true });
 
 
 ✅ Summary Table – Interview Quick Notes
 
 Topic	                        Key Idea
+
 Event Delegation	            Parent handles events for children
 Bubbling	                    Default phase: child → parent
 Capturing	                    Phase before bubbling: parent → child
-stopPropagation	                Stops bubbling or capturing
+stopPropagation	              Stops bubbling or capturing
 once	                        Listener runs once and then auto removed
-passive	                        Hint to browser that listener won’t call preventDefault
-capture                        	Makes listener run in capturing phase
+passive	                      Hint to browser that listener won’t call preventDefault
+capture                       Makes listener run in capturing phase
 
 ---*/

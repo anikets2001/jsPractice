@@ -34,6 +34,7 @@ greet.apply(user, ["Hey"]); // Hey, my name is Alice (arguments passed as array)
 const boundFn = greet.bind(user, "Hello");
 boundFn(); // Hello, my name is Alice
 
+
 // 🔸 3. this Inside Objects
 const obj = {
   a: 10,
@@ -99,13 +100,13 @@ document.getElementById("btn").addEventListener("click", () => {
 
 Context	this refers to...
 
-Global scope             (non-strict)	        window (or global object)
-Inside regular function	 Depends on how it's called
-Inside arrow function	 Lexically inherited from the outer scope
-Inside object method	 The object the method belongs to
-Inside class method	The  class instance
-Event handler (regular)	 The HTML element that triggered the event
-Event handler (arrow)	 Inherits this from surrounding scope (often window)
-With call/apply/bind	 Manually sets this
+Global scope                (non-strict)	window (or global object)
+Inside regular function	    Depends on how it's called
+Inside arrow function	      Lexically inherited from the outer scope
+Inside object method	      The object the method belongs to
+Inside class method	        The  class instance
+Event handler (regular)	    The HTML element that triggered the event
+Event handler (arrow)	      Inherits this from surrounding scope (often window)
+With call/apply/bind	      Manually sets this
 
 ---*/
