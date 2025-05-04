@@ -25,9 +25,9 @@ Here, employee.__proto__ === person;
 
 /*---
 ✅ 2. __proto__ vs prototype
-Term	Used For
-__proto__	Property on objects to refer to their prototype
-prototype	Property on constructor functions to define properties/methods to be inherited
+Term	                      Used For
+__proto__	                  Property on objects to refer to their prototype
+prototype	                  Property on constructor functions to define properties/methods to be inherited
 ---*/
 
 // ✅ Example:
@@ -84,12 +84,12 @@ Every object eventually links to Object.prototype unless you break the chain man
 /*---
 ✅ 5. Interview-Friendly Summary Table
 
-Concept	                Key Point
+Concept	               Key Point
 __proto__	            Internal reference to the prototype object
 prototype	            Used by constructor functions to define shared methods
-Object.create()	        Creates a new object and sets its prototype
+Object.create()	      Creates a new object and sets its prototype
 class	                Cleaner syntax over prototype inheritance
-extends	                Creates a subclass
+extends	              Creates a subclass
 super	                Calls parent constructor/methods
 
 ---*/

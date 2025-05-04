@@ -137,6 +137,15 @@ var is function-scoped, so all callbacks share the same i.
 
 let is block-scoped, so each iteration gets a new j
 
+var i is not block-scoped, so all the functions created inside the loop share the same i variable.
+When the setTimeout callbacks run after 100ms, the loop has already finished and i has been incremented to 3.
+So, all three callbacks log 3.
+
+
+let j is block-scoped, so a new j is created for each iteration of the loop.
+Each callback closes over its own copy of j.
+So, the values 0, 1, and 2 are logged as expected.
+
 ---*/
 
 // Example 2: Hoisting with var

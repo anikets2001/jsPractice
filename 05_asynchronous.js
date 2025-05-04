@@ -49,9 +49,10 @@ getData();
 /*---
 🔸 3. Microtasks vs Macrotasks
 
-Task Type	Examples	                            Priority
-Microtask	Promise.then(), queueMicrotask()	    ✅ Higher
-Macrotask	setTimeout, setInterval, DOM events	    ❌ Lower
+Task Type	        Examples	                                Priority
+Microtask	        Promise.then(), queueMicrotask()	        ✅ Higher
+Macrotask	        setTimeout, setInterval, DOM events	      ❌ Lower
+
 ---*/
 
 console.log("Start");
@@ -119,7 +120,7 @@ Async/Await	        Cleaner syntax for promises using await
 Microtasks	        Promises, queueMicrotask – run first
 Macrotasks	        setTimeout, setInterval, UI events – run later
 Event Loop	        Handles execution order between sync, micro, macro tasks
-Callback Hell	    Deeply nested callbacks, hard to read
+Callback Hell	      Deeply nested callbacks, hard to read
 Promise Chaining    Clean alternative to callbacks
 
 ---*/
