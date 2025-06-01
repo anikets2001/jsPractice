@@ -20,7 +20,7 @@ function debounce(func, delay) {
   let timeoutId;
 
   return function (...args) {
-    clearTimeout(timeoutId); // Clear the previous timer
+    clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       func.apply(this, args);
     }, delay);
@@ -28,11 +28,24 @@ function debounce(func, delay) {
 }
 
 //   🛠 Example Usage:
-const handleInput = debounce(function (e) {
-  console.log("Searching for:", e.target.value);
-}, 300);
+const debounceFunc = function (e) {
+  console.log("searching for:", e.target.value);
+};
+const handleInput = debounce(debounceFunc, 300);
 
 document.getElementById("search").addEventListener("input", handleInput);
+
+/*---
+
+“This is my custom debounce function. 
+It delays the execution of the provided func until after delay milliseconds have passed without the function being called again. 
+I use clearTimeout to cancel the previous timer and setTimeout to restart it.
+
+I’ve used apply(this, args) to preserve the original context and pass all arguments properly.
+
+In the usage example, I debounce a search input so that the debounceFunc only runs after the user stops typing for 300ms. 
+This improves performance by reducing unnecessary calls.”
+---*/
 
 /*--
 
@@ -45,24 +58,40 @@ Resize or scroll event — don’t want it firing hundreds of times per second.
 --*/
 
 // Implementation
-function throttle(func, limit) {
-  let lastCall = 0;
+
+/*---
+You have a button that logs "Clicked!" whenever it's pressed. 
+But you want to limit how often that log can happen — 
+e.g., only once every 2 seconds, even if the button is clicked rapidly.
+
+
+<button id="throttle-btn">Click me rapidly</button>
+---*/
+
+function throttle(func, delay) {
+  let inThrottle = false;
 
   return function (...args) {
-    const now = Date.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
+    if (!inThrottle) {
       func.apply(this, args);
+      inThrottle = true;
+
+      setTimeout(() => {
+        inThrottle = false;
+      }, delay);
     }
   };
 }
 
-//   🛠 Example Usage:
-const handleResize = throttle(function () {
-  console.log("Window resized at", new Date().toISOString());
-}, 500);
+function handleClick() {
+  console.log("Clicked!");
+}
 
-window.addEventListener("resize", handleResize);
+const throttledClick = throttle(handleClick, 2000);
+document
+  .getElementById("throttle-btn")
+  .addEventListener("click", throttledClick);
+
 
 /*---
 🎯 Interview Soundbites
@@ -72,3 +101,4 @@ window.addEventListener("resize", handleResize);
 ✅ For Throttle:
 "Throttle restricts how often a function can run over time, ensuring it only fires once per interval — useful for resize or scroll listeners."
 ---*/
+

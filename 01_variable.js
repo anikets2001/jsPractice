@@ -48,7 +48,7 @@
  *    - Variables declared with let and const inside a block (e.g., if, for, while, etc.)
  *    - Accessible only within that specific block.
  *    - var does NOT have block scope—it leaks outside the block.
-
+ * 
  */
 
 /*

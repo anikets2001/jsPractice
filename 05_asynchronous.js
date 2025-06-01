@@ -89,8 +89,6 @@ Visualization:
 ✅ Interview Tip: Microtasks are processed before macrotasks after each stack execution.
 ---*/
 
-
-
 // 🔸 5. Callback Hell & Promise Chaining
 
 // ❌ Callback Hell (Pyramid of Doom)
@@ -107,8 +105,7 @@ doA()
   .then(doB)
   .then(doC)
   .then(() => console.log("Done"))
-  .catch(err => console.error(err));
-
+  .catch((err) => console.error(err));
 
 /*---
 ✅ Interview Summary Table
@@ -124,3 +121,47 @@ Callback Hell	      Deeply nested callbacks, hard to read
 Promise Chaining    Clean alternative to callbacks
 
 ---*/
+
+/*--- methods of promises
+1. Promise.all([p1,p2,p3]) -  waits for all promises to get resolved, if any promise get rejected, then entire result get rejects.
+2. Promise.allSettled([p1,p2,p3])  - wait to all promises to get settled (either fullfil or reject), and give us aggregated result
+3. Promise.race([p1,p2,p3]) - returns the first settled promise(success or failure)
+4. Promise.any([p1,p2,p3]) - returns the first fulfilled promise(success)
+---*/
+
+// Example:
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("p1 resolve");
+  }, 1000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("p3 reject");
+  }, 1000);
+});
+
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("p3 resolved");
+  }, 1000);
+});
+
+// promise.all()  -  it will wait for all promises to get resolved, if any rejected all rejected
+const all = Promise.all([p1, p2, p3]);
+all.then((res) => console.log("all:", res)).catch((err) => console.error(err));
+
+// promise.allSettled()   - it will give us aggregated result of both resolved and rejected promises
+const allSettled = Promise.allSettled([p1, p2, p3]);
+allSettled
+  .then((res) => console.log("allsettled:", res))
+  .catch((err) => console.error(err));
+
+// promise.race()   - it will return first settled promise
+const race = Promise.race([p1, p2, p3]);
+race.then((res) => console.log("race:", res)).catch((err) => console.log(err));
+
+// Promise.any()  - it will return the first resolved promise(success)
+const any = Promise.any([p1, p2, p3]);
+any.then((res) => console.log("any:", res)).catch((err) => console.log(err));

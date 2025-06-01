@@ -3,7 +3,7 @@
  * Its value depends on how the function is called (not where it's defined).
  */
 
-// this is regular functions
+// this in regular functions
 const person = {
   name: "John",
   sayHello: function () {
