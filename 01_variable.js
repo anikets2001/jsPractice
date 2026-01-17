@@ -67,8 +67,8 @@
  */
 
 // Example:
-console.log(a); // undefined (hoisted var)
-var a = 10;
+// console.log(a); // undefined (hoisted var)
+// var a = 10;
 
 // console.log(b); // ReferenceError (TDZ)
 // let b = 20;
@@ -76,10 +76,10 @@ var a = 10;
 // console.log(c); // ReferenceError (TDZ)
 // const c = 30;
 
-sayHi(); // ✅ works (function hoisted fully)
-function sayHi() {
-  console.log("Hello!");
-}
+// sayHi(); // ✅ works (function hoisted fully)
+// function sayHi() {
+//   console.log("Hello!");
+// }
 
 // greet(); ❌ TypeError
 const greet = function () {
@@ -221,4 +221,107 @@ JS looks for a in inner() → not found
 Then checks outer() → not found
 
 Then checks global scope → ✅ found
+---*/
+
+
+
+
+/*-------------------------------------------- Interview Questions --------------------------------------*/
+
+/*----
+
+1. What are variables in JavaScript, and why do we need them?
+ans: Variables are named containers used to store data in memory so that we can reference, reuse, and manipulate values like numbers, strings, and booleans throughout a program.
+
+
+
+2. What are the different ways to declare variables in JavaScript? Explain each one briefly? 
+ans: JavaScript variables can be declared using var, let, and const.
+var is function-scoped, hoisted, and initialized with undefined, and it can be re-declared and re-initialized.
+let and const are block-scoped, hoisted but not initialized, so accessing them before declaration throws a ReferenceError.
+let allows re-initialization but not re-declaration, while const allows neither.
+Variables declared with var in the global scope become properties of the window object.
+
+
+
+3. What is scope in JavaScript? Explain the different types of scope?
+ans:  Scope in JavaScript defines the region of the code where a variable can be accessed.
+There are three main types of scope:
+Global scope – Variables declared outside any function or block are globally scoped and can be accessed anywhere in the program.
+Function scope – Variables declared inside a function using var, let, or const are accessible only within that function.
+Block scope – Variables declared using let and const inside a block like {}, if, or for are accessible only within that block.
+var does not have block scope, which is why it can leak outside blocks.
+
+
+
+4. Why does var not support block scope, and what problems can it cause in real applications?
+ans: var does not support block scope because it was designed before block scope existed in JavaScript. It is only function-scoped, so when a var variable is declared inside a block like if or for, it gets hoisted to the nearest function or global scope.
+
+This can cause problems such as:
+Variable leakage outside the block
+Unexpected overwriting of variables
+Bugs in loops, especially when using var in for loops with asynchronous code
+Because of these issues, let and const were introduced to provide proper block scoping and safer variable handling.
+
+
+
+5. What is variable shadowing in JavaScript? Is it allowed with var, let, and const?
+ans: Variable shadowing occurs when a variable declared in an inner scope has the same name as a variable in an outer scope.
+The inner variable shadows (hides) the outer one within that scope.
+
+
+
+6. What is lexical scope in JavaScript?
+ans: Lexical scope means that the scope of a variable is determined by its position in the source code. JavaScript uses lexical scoping, so scope chaining is decided at the time of writing the code, not at runtime based on where a function is called.
+
+
+7. What is scope chaining in JavaScript, and how does JavaScript resolve a variable when it is not found in the current scope?
+ans: Scope chaining is the process by which JavaScript resolves variables. When a variable is accessed, JavaScript first looks in the current scope. If it is not found, it searches in the outer lexical scope, then continues moving outward until it reaches the global scope. If the variable is not found anywhere in the scope chain, a ReferenceError is thrown.
+
+
+
+8. What is the Temporal Dead Zone (TDZ) in JavaScript?
+ans: The Temporal Dead Zone is the phase during execution where a let or const variable exists in the scope but cannot be accessed before its declaration is evaluated. Accessing the variable during this phase results in a ReferenceError.
+
+
+
+9.Why was the Temporal Dead Zone introduced in JavaScript? What problem does it solve?
+ans: The Temporal Dead Zone was introduced to prevent bugs caused by accessing variables before they are declared.
+Even though let and const are hoisted, they are not initialized until their declaration is executed. TDZ ensures that accessing them before initialization throws a ReferenceError, instead of silently returning undefined like var.
+
+
+
+10.If let and const are hoisted, why do we still get a ReferenceError when accessing them before declaration?
+ans: let and const are hoisted, but they are not initialized during the hoisting phase. They remain in the Temporal Dead Zone until the execution reaches their declaration. If we try to access them before initialization, JavaScript throws a ReferenceError to prevent unsafe access.
+
+
+
+11. Does the Temporal Dead Zone exist only in block scope, or also in function and global scope? Explain.
+ans: The Temporal Dead Zone exists for let and const variables in all scopes—block, function, and global—starting from the beginning of the scope until the variable is initialized. TDZ does not apply to var.
+
+
+
+12. Can JavaScript access variables from inner scopes to outer scopes, or only from outer to inner? Why?
+ans: JavaScript can access variables from outer scopes but not from inner scopes. This is because JavaScript uses lexical scoping, and scope chaining only works from the current scope outward. The JavaScript engine never searches inner scopes for variables.
+
+
+
+13. How does the global scope fit into the scope chain, and what happens if a variable is not found anywhere?
+ans: The scope chain starts from the current scope and moves outward through its lexical scopes until it reaches the global scope, which is the final level. If the variable is not found in any scope, JavaScript throws a ReferenceError.
+
+
+
+14. In real-world JavaScript development, when should you use var, let, and const? Why?
+ans: In real-world development, const should be the default choice because it prevents reassignment and makes code more predictable. let should be used when a variable needs to be reassigned later, such as in loops or conditional logic.
+var is generally avoided in modern JavaScript because it is function-scoped, allows re-declaration, and can cause bugs due to hoisting and scope leakage.
+
+
+
+15.Explain how hoisting, TDZ, scope, and scope chaining work together when JavaScript executes code.
+ans: When JavaScript executes code, it first enters the creation phase, where memory is allocated. During this phase, variables and functions are hoisted to the top of their respective scopes.
+var variables are hoisted and initialized with undefined, while let and const are hoisted but not initialized, which creates the Temporal Dead Zone. Accessing them before declaration results in a ReferenceError.
+In the execution phase, code runs line by line. When a variable is accessed, JavaScript resolves it using scope chaining, searching from the current scope to outer lexical scopes and finally the global scope.
+Scope, hoisting, TDZ, and scope chaining together ensure predictable variable access and help prevent bugs related to premature variable usage.
+
+
 ---*/
